@@ -32,3 +32,13 @@
        (if-match-where ?x 2 (= ?x 1) ?x 'else)
        'else)))
 
+(deftest test-mb-mapcar
+  (multiple-value-bind (v1 v2)
+      (mb-mapcar #'(lambda (x y) (values (+ x y) (- x y))) '(1 2 3) '(2 4 6))
+    (ok (equal v1 '(3 6 9)))
+    (ok (equal v2 '(-1 -2 -3))))
+  (multiple-value-bind (v1 v2)
+      (mb-mapcar #'(lambda (x) (values x x)) '())
+    (ok (equal v1 '()))
+    (ok (equal v2 '()))
+  )

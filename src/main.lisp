@@ -1,6 +1,6 @@
 (defpackage my-util
   (:use :cl :my-util/dbind)
-  (:export with-gensyms if-match if-match-where))
+  (:export with-gensyms if-match if-match-where mb-mapcar))
 
 (in-package :my-util)
 
@@ -61,4 +61,13 @@
 
 (defun var? (x)
   (and (symbolp x) (eq (char (symbol-name x) 0) #\?)))
+
+(defun mb-mapcar (func &rest params)
+  "多値を返す関数FUNCについて拡張したMAPCAR。それぞれの値をリストにして多値で返す
+   PARAMSが空の時FUNCを呼ばないのでいくつ多値を返せばいいかわからないので0個で返すことにする
+   (MULTIPLE-VALUE-BINDで足りない変数はNILになるからたぶん大丈夫だろう)"
+  (labels ((f (&rest args) (values-list (apply func args))))
+    (apply #'values (apply #'mapcar #'list (apply #'mapcar #'f params)))))
+
+
 
