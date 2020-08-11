@@ -68,6 +68,3 @@
    (MULTIPLE-VALUE-BINDで足りない変数はNILになるからたぶん大丈夫だろう)"
   (labels ((f (&rest args) (values-list (apply func args))))
     (apply #'values (apply #'mapcar #'list (apply #'mapcar #'f params)))))
-
-
-
