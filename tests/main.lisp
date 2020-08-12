@@ -42,3 +42,8 @@
     (ok (equal v1 '()))
     (ok (equal v2 '()))
   )
+  (multiple-value-bind (v1 v2)
+      (mb-mapcar #'(lambda (x) (values nil x)) '(1 2))
+    (ok (equal v1 '(nil nil)))
+    (ok (equal v2 '(1 2)))
+  ))
