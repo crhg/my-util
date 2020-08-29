@@ -6,8 +6,9 @@
   :components ((:module "src"
                 :components
                 ((:file "dbind")
-		 (:file "main" :depends-on ("dbind"))
-		 (:file "case-match" :depends-on ("main" "dbind")))))
+		 (:file "main" :depends-on ("dbind" "misc" "case-match"))
+		 (:file "misc")
+		 (:file "case-match" :depends-on ("dbind")))))
   :description ""
   :in-order-to ((test-op (test-op "my-util/tests"))))
 

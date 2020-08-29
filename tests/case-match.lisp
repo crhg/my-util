@@ -1,6 +1,6 @@
 (defpackage my-util/tests/case-match
   (:use :cl
-        :my-util/case-match
+        :my-util
         :rove))
 (in-package :my-util/tests/case-match)
 

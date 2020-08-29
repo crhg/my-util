@@ -8,13 +8,13 @@
 
 (deftest test-with-gensyms
   (ok (equal
-       (macroexpand '(my-util::with-gensyms () body))
+       (macroexpand '(with-gensyms () body))
        '(let () body)))
   (ok (equal
-       (macroexpand '(my-util::with-gensyms (a) body))
+       (macroexpand '(with-gensyms (a) body))
        '(let ((a (gensym))) body)))
   (ok (equal
-       (macroexpand '(my-util::with-gensyms (a b) body))
+       (macroexpand '(with-gensyms (a b) body))
        '(let ((a (gensym))
 	      (b (gensym)))
 	 body))))

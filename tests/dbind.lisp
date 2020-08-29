@@ -1,6 +1,6 @@
 (defpackage my-util/tests/dbind
   (:use :cl
-        :my-util/dbind
+        :my-util
         :rove))
 (in-package :my-util/tests/dbind)
 
